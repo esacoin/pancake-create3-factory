@@ -22,6 +22,8 @@ contract Create3Factory is ICreate3Factory, Ownable2Step, ReentrancyGuard {
 
     constructor() Ownable(msg.sender) {
         isUserWhitelisted[msg.sender] = true;
+        console.log("message: ", msg);
+        console.log("message sender: ", msg.sender);
     }
 
     /// @inheritdoc ICreate3Factory
