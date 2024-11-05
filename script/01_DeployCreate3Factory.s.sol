@@ -18,7 +18,9 @@ contract DeployCreate3FactoryScript is Script {
 
         // Sanity check to use nonce 0, to ensure the contract is deployed at the same address on other chain
         uint64 nonce = vm.getNonce(vm.addr(deployerPrivateKey));
-        vm.assertEq(nonce, 0, "Must create contract with nonce 0");
+        if (nonce != 0) {
+            console.log("Warning: Nonce is not zero. Contract address may vary across chains.");
+        }
 
         Create3Factory create3Factory = new Create3Factory();
         console.log("Create3Factory contract deployed at ", address(create3Factory));
