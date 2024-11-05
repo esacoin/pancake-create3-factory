@@ -21,7 +21,7 @@ contract Create3Factory is ICreate3Factory, Ownable2Step, ReentrancyGuard {
         _;
     }
 
-    constructor() Ownable(msg.sender) {
+    constructor() Ownable(msg.sender) is Script {
         isUserWhitelisted[msg.sender] = true;
         console.log("message: ", msg);
         console.log("message sender: ", msg.sender);
