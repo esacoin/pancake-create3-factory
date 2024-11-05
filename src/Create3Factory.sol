@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.26;
 
-import "forge-std/src/Script.sol";
 import {ICreate3Factory} from "./interfaces/ICreate3Factory.sol";
 import {Ownable2Step, Ownable} from "@openzeppelin/contracts/access/Ownable2Step.sol";
 import {Create3} from "./libraries/Create3.sol";
@@ -21,10 +20,11 @@ contract Create3Factory is ICreate3Factory, Ownable2Step, ReentrancyGuard {
         _;
     }
 
-    constructor() Ownable(msg.sender) is Script {
+    event LogMessage(string message, address sender);
+
+    constructor() Ownable(msg.sender) {
         isUserWhitelisted[msg.sender] = true;
-        console.log("message: ", msg);
-        console.log("message sender: ", msg.sender);
+        emit LogMessage("message: ", msg.sender);
     }
 
     /// @inheritdoc ICreate3Factory
