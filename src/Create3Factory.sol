@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.26;
 
+import "forge-std/src/Script.sol";
 import {ICreate3Factory} from "./interfaces/ICreate3Factory.sol";
 import {Ownable2Step, Ownable} from "@openzeppelin/contracts/access/Ownable2Step.sol";
 import {Create3} from "./libraries/Create3.sol";
